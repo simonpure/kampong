@@ -1,9 +1,11 @@
-# Kampung
+# Kampong
 Moldedao Web 3.0 Hackathon 2021
+
+![Kampong Overview](https://simonpure.github.io/kampong/logo.svg)
 
 # Overview
 
-![Kampung Overview](https://simonpure.github.io/kampong/static/overview.jpg)
+![Kampong Overview](https://simonpure.github.io/kampong/static/overview.jpg)
 
 [Project submission [pdf]](https://simonpure.github.io/kampong/static/project_kampong_v1.pdf)
 
