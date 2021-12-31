@@ -8,12 +8,34 @@
   </head>
   <body>
     <center><h2>Welcome to the MoleDAO Hackathon</h2></center>
-    <div id="app"></div>
+    <div id="auth" class="main">
+      <button class="login">Login</button>
+      <div class="error"></div>
+      <div class="dialog"></div>
+    </div>
+    <div id="app" class="hidden"></div>
     <script>
+      // Frontpage Ping config
       let STATE = {path: '/kampung', chains: [1, 4]};
-      // https://1640840570669-dot-frontpageping.appspot.com/out/app-4fe2881.js
     </script>
     <script src="https://www.frontpageping.com/out/app-2bb3c1e.js" type="text/javascript">
+    </script>
+    <script src="auth/push.js"></script>
+    <script type="text/javascript" src="auth/qr_lib/generate/gen_qrcode.js"></script>
+    <script>
+      // Silent Auth config
+      document.querySelector('.login')
+        .addEventListener('click', sl_auth);
+
+      // wire up
+      document.addEventListener('authentication', (e) => {
+        if (e.result == 'allowed') {
+          document.querySelector('#app').classList.remove('hidden');
+          document.querySelector('#auth').classList.add('hidden');
+        } else {
+          document.querySelector('.error').innerHTML = `Please try login in again`;
+        }
+      }, false);
     </script>
   </body>
 </html>

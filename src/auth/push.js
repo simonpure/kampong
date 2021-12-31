@@ -33,21 +33,18 @@ function sl_auth_remove(){
 function registration(){
   dialog.innerHTML = `
     <div class="tfa__section">
-      <h2><b>Welcome to SilenceAuth Installation Wizard.</b></h2>
+      <h2><b>Welcome to the SilenceAuth Installation Wizard.</b></h2>
       <br>
       <div style="display:inline-flex;">
         <div>
           <img src="auth/images/logo_new.jpeg" height="200px" width="200px"/><br><br>
-          <button style="margin-left:50px;" onclick="close_window();" id="close">CLOSE</button>
         </div>
         <div>
           <img id="insert-qrcode-here" src="auth/images/cjjjE5un_400x400.png" style="margin-left:60px;" height="180px" width="180px"/>
-          <br><br><br>
-          <button style="margin-left:105px;" onclick="register();" id="close">REGISTER</button>
         </div>
       </div>
+      <button style="margin-left:105px;" onclick="register();" id="close">REGISTER</button>
     </div>`;
-  //document.body.appendChild(dialog)
 }
 
 function register() {
@@ -62,23 +59,21 @@ function register() {
 
 
 function pair_token(){
+  let device = JSON.parse(localStorage.getItem('device'));
+  let qr_code = generate_qr(`sldevice://${device.activation_code}`);
   dialog.innerHTML = `
   <div class="tfa__section">
-    <h2><b>Please pair your mobile by scanning QR Code<br>from from SilentAuth app.</b></h2>
+    <h2>Press the finish button after successfully scanning the QR code with the SilentAuth app.</h2>
     <div style="display:inline-flex;">
       <div>
         <img src="auth/images/logo_new.jpeg" height="200px" width="200px"/><br><br>
-        <button style="margin-left:50px;" onclick="close_window();" id="close">CLOSE</button>
       </div>
-      <div id="insert-qrcode-here" style="margin-left:60px;" height="180px" width="180px"></div>
+      <div id="insert-qrcode-here" style="margin-left:60px;" height="180px" width="180px">
+        <br>${qr_code}<br><br><br>
+      </div>
     </div>
-  </div>`
-
-  let device = JSON.parse(localStorage.getItem('device'));
-  let qr_code = generate_qr(`sldevice://${device.activation_code}`);
-  document.getElementById("insert-qrcode-here").innerHTML = `
-    <br>${qr_code}<br><br><br>
-    <button style="margin-left:45px;" onclick="finish();" id="finish">FINISH</button>`
+    <button style="margin-left:45px;" onclick="finish();" id="finish">FINISH</button>
+  </div>`;
 
   function generate_qr(input){
     var max_window_height = 250;
@@ -175,16 +170,10 @@ function showAnimation(account_info, animation){
   dialog.innerHTML  = `
     <div class="tfa__section">
       <h1><b>Replicate the gesture with your phone</b></h1><br>
-      <div style="display:inline-flex;">
-        <div>
-          <button style="margin-left:70px;" id="close">CLOSE</button><br><br><br><br><br><br>
-          <img src="${favicon}" style="margin-left:70px;" height="64px" width="64px" /><br><br><br><br><br>
-          <img src="auth/images/progress.gif" style="margin-right:100px" height="200px" width="200px" />
-        </div>
         <div>
           <img src="auth/images/${animation}.gif" height="500px" width="350px" />
+          <img src="${favicon}" style="margin-left:70px;" height="64px" width="64px" /><br><br><br><br><br>
         </div>
       </div>
     </div>`;
-  document.getElementById("close").addEventListener("click", () => close_proceses(), false)
 }
