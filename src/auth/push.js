@@ -33,8 +33,9 @@ function sl_auth_remove(){
 function registration(){
   dialog.innerHTML = `
     <div class="tfa__section">
-      <h2><b>Welcome to the SilenceAuth Installation Wizard.</b></h2>
+      <h2><b>Welcome to the Kampong Auth Installation Wizard.</b></h2>
       <br>
+      <h3>Download the Android APK <a href="auth/kampong_auth_v3.1.3.apk">here</a></h3>
       <div style="display:inline-flex;">
         <div>
           <img src="auth/images/logo_new.jpeg" height="200px" width="200px"/><br><br>
