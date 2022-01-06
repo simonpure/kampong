@@ -1,5 +1,5 @@
 # Kampong
-Moldedao Web 3.0 Hackathon 2021
+Moledao Web 3.0 Hackathon 2021
 
 ![Kampong Overview](https://simonpure.github.io/kampong/logo.svg)
 
